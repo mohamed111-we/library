@@ -1,0 +1,90 @@
+<odoo>
+
+    <record id="view_library_book_form" model="ir.ui.view">
+        <field name="name">library.book.form</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_available" string="Available" type="object" class="btn-success"
+                            invisible="status == 'available'"/>
+                    <button name="action_borrowed" string="Borrowed" type="object" class="oe_highlight"
+                            invisible="status == 'borrowed'"/>
+                    <field name="status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ref" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="title"/>
+                            <field name="library_id"/>
+                            <field name="author_id"/>
+                            <field name="publish_date"/>
+                            <field name="category"/>
+                            <field name="available_count"/>
+                        </group>
+                        <group>
+                            <field name="isbn"/>
+                            <field name="status"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_library_book_tree" model="ir.ui.view">
+        <field name="name">library.book.tree</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="ref"/>
+                <field name="title"/>
+                <field name="library_id"/>
+                <field name="author_id"/>
+                <field name="publish_date"/>
+                <field name="category"/>
+                <field name="available_count"/>
+                <field name="isbn"/>
+                <field name="status"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_library_book_action" model="ir.actions.act_window">
+        <field name="name">Library Book</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create A New Book...
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="book_info"
+              name="Books Info"
+              parent="library_root"
+              sequence="20"/>
+
+    <menuitem id="book_menu"
+              name="Books"
+              parent="book_info"
+              action="view_library_book_action"
+              sequence="10"/>
+
+</odoo>

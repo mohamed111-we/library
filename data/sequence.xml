@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="seq_library" model="ir.sequence">
+        <field name="name">Library</field>
+        <field name="code">library.library</field>
+        <field name="prefix">LIB-</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_book" model="ir.sequence">
+        <field name="name">Book</field>
+        <field name="code">library.book</field>
+        <field name="prefix">BOOK-</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_member" model="ir.sequence">
+        <field name="name">Member</field>
+        <field name="code">library.member</field>
+        <field name="prefix">MEM-</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_borrow" model="ir.sequence">
+        <field name="name">Borrow</field>
+        <field name="code">library.borrow</field>
+        <field name="prefix">BOR-</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+</odoo>

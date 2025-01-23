@@ -1,0 +1,113 @@
+<odoo>
+
+    <record id="view_library_library_form" model="ir.ui.view">
+        <field name="name">library.library.form</field>
+        <field name="model">library.library</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_draft" string="Draft" type="object" class="btn-success"
+                            invisible="state == 'draft'"/>
+                    <button name="action_open" string="Open" type="object" class="oe_highlight"
+                            invisible="state == 'open'"/>
+                    <button name="action_closed" string="Closed" type="object" class="oe_highlight"
+                            invisible="state == 'closed'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_book"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-pencil-square-o"
+                                invisible="book_count == 0">
+                            <field name="book_count" widget="statinfo" string="Books"/>
+                        </button>
+                    </div>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ref" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="address"/>
+                            <field name="established_date"/>
+                        </group>
+                        <group>
+                            <field name="book_count"/>
+                            <field name="working_hours"/>
+                            <field name="library_type"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Books">
+                            <field name="book_ids" readonly="1">
+                                <tree>
+                                    <field name="title"/>
+                                    <field name="author_id"/>
+                                    <field name="category"/>
+                                    <field name="isbn"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_library_library_tree" model="ir.ui.view">
+        <field name="name">library.library.tree</field>
+        <field name="model">library.library</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="state=='closed'"
+                  decoration-success="state=='open'">
+                <field name="name"/>
+                <field name="established_date"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="address"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_library_library_action" model="ir.actions.act_window">
+        <field name="name">Library</field>
+        <field name="res_model">library.library</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create A New Library...
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="library_root"
+              name="Library"
+              sequence="10"/>
+
+    <menuitem id="library_info"
+              name="Library Info"
+              parent="library_root"
+              sequence="10"/>
+
+    <menuitem id="library_menu"
+              name="Library"
+              parent="library_info"
+              action="view_library_library_action"
+              sequence="10"/>
+
+</odoo>
