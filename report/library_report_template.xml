@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="library_report" model="ir.actions.report">
+        <field name="name">Library Report</field>
+        <field name="model">library.library</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">library.library_report_template</field>
+        <field name="report_file">library.library_report_template</field>
+        <field name="binding_model_id" ref="model_library_library"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="library_report_template">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <h2>
+                        Library Report
+                    </h2>
+                    <style>
+                        table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-bottom: 20px;
+                        font-size: 14px;
+                        }
+
+                        table, th, td {
+                        border: 1px solid #ddd;
+                        }
+
+                        th {
+                        background-color: #f4f4f4;
+                        color: #333;
+                        padding: 8px;
+                        text-align: center;
+                        }
+
+                        td {
+                        padding: 8px;
+                        text-align: center;
+                        }
+
+                        p{
+                        font-size: 25px;
+                        color: #4caf50;
+                        font-weight: bold;
+                        margin-bottom: 15px;
+                        border-radius: 8px;
+                        margin-top: 0;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        }
+
+                        h2 {
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: #fff;
+                        background-color: #4caf50;
+                        padding: 15px;
+                        text-align: center;
+                        border-radius: 8px;
+                        margin-top: 0;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        }
+
+                        div{
+                        margin-bottom: 10px;
+                        font-size: 20px;
+                        }
+
+                        strong{
+                        color: #000;
+                        }
+
+                        .quote {
+                        font-size: 18px;
+                        font-style: italic;
+                        color: #555;
+                        text-align: center;
+                        margin-top: 30px;
+                        padding: 15px;
+                        border-left: 4px solid #4caf50;
+                        background-color: #f9f9f9;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        border-radius: 8px;
+                        }
+
+                    </style>
+
+                    <div>
+                        <strong>Reference :</strong>
+                        <t t-esc="o.ref"/>
+                    </div>
+                    <div>
+                        <strong>Library Name :</strong>
+                        <t t-esc="o.name"/>
+                    </div>
+                    <div>
+                        <strong>Library Phone :</strong>
+                        <t t-esc="o.phone"/>
+                    </div>
+                    <div>
+                        <strong>Library Email :</strong>
+                        <t t-esc="o.email"/>
+                    </div>
+                    <div>
+                        <strong>Library Address :</strong>
+                        <t t-esc="o.address"/>
+                    </div>
+                    <div>
+                        <strong>Established Date :</strong>
+                        <t t-esc="o.established_date"/>
+                    </div>
+                    <div>
+                        <strong>Working Hours :</strong>
+                        <t t-esc="o.working_hours"/>
+                    </div>
+                    <div>
+                        <strong>Library Type :</strong>
+                        <t t-esc="o.library_type"/>
+                    </div>
+                    <div>
+                        <strong>State :</strong>
+                        <t t-esc="o.state"/>
+                    </div>
+
+                    <p>Table Of Books</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Book Title</th>
+                                <th>Author</th>
+                                <th>Category</th>
+                                <th>Isbn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="o.book_ids" t-as="book">
+                                <tr>
+                                    <td>
+                                        <t t-esc="book.title"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="book.author_id.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="book.category"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="book.isbn"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <div class="quote">
+                        <p>"A library is not a luxury but one of the necessities of life." – Henry Ward Beecher</p>
+                    </div>
+
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

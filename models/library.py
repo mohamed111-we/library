@@ -79,3 +79,17 @@ class LibraryLibrary(models.Model):
             'domain': [('library_id', '=', self.id)],
             'context': {'default_library_id': self.id},
         }
+
+    def action_open_book_wizard(self):
+        """Opens the book creation wizard."""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Open Book'),
+            'res_model': 'library.book.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_library_id': self.id,
+            },
+        }

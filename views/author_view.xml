@@ -7,10 +7,14 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="book_count"/>
-                        <field name="biography"/>
-                        <field name="birth_date"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="book_count"/>
+                        </group>
+                        <group>
+                            <field name="biography"/>
+                            <field name="birth_date"/>
+                        </group>
                     </group>
                     <notebook>
                         <page string="Books">

@@ -25,6 +25,11 @@
         'views/member_view.xml',
         'views/borrow_view.xml',
 
+        'report/library_report_template.xml',
+
+
+        'wizard/library_book_wizard_view.xml',
+
     ],
     'demo': [],
     'installable': True,

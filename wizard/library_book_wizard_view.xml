@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_library_book_wizard_form" model="ir.ui.view">
+            <field name="name">library.book.wizard.form</field>
+            <field name="model">library.book.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="title"/>
+                            <field name="publish_date"/>
+                            <field name="category"/>
+                            <field name="available_count"/>
+                            <field name="isbn"/>
+                            <field name="library_id"/>
+                            <field name="author_id"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_create_book" string="Create Book" type="object" class="oe_highlight"
+                                data-hotkey="q"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_library_book_wizard_action" model="ir.actions.act_window">
+            <field name="name">Library Book Wizard Action</field>
+            <field name="res_model">library.book.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="library_book_wizard"
+                  name="Book Wizard"
+                  parent="library_root"
+                  action="view_library_book_wizard_action"
+                  sequence="60"
+        />
+
+
+    </data>
+</odoo>

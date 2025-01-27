@@ -4,3 +4,4 @@ access_library_book,access.library.book,model_library_book,,1,1,1,1
 access_library_author,access.library.author,model_library_author,,1,1,1,1
 access_library_member,access.library.member,model_library_member,,1,1,1,1
 access_library_borrow,access.library.borrow,model_library_borrow,,1,1,1,1
+access_library_book_wizard,access.library.book.wizard,model_library_book_wizard,,1,1,1,1
